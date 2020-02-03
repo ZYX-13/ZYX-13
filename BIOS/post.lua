@@ -59,7 +59,6 @@ lualogo:draw(sw-lualogo:width()-6,5)
 zyxlogo:draw(2,7)
 
 GPU.print("ZYX-13 - Fantasy Computer",15,6)
-GPU.print("Copyright (C) Rami Sabbagh",15,13)
 
 --ZYX-13 Sourcecode .love creation
 if _ZYX_Old or not love.filesystem.getInfo("/Miscellaneous/ZYX-13_Source.love") then
@@ -126,7 +125,7 @@ if _ZYX_Old or not love.filesystem.getInfo("/Miscellaneous/ZYX-13_Source.love") 
 end
 
 GPU.printCursor(0,3,0)
-GPU.print(string.format("NormBIOS Revision %d%d%d-018",_LVer.major,_LVer.minor,_LVer.patch))
+GPU.print(string.format("NormBIOS Revision %d%d%d-018",_ZVer.major,_ZVer.minor,_ZVer.patch))
 if DevMode then GPU.color(6) GPU.print("# Devmode Enabled #") GPU.color(7) end
 GPU.print("")
 
@@ -179,7 +178,7 @@ local function InstallOS(update)
 end
 
 if not fs.exists("/boot.lua") then _ZYX_Old = false; InstallOS()
-elseif (DevMode or _LVer.tag == "Development") and not fs.exists("/.noupdate") then InstallOS(true) end
+elseif (DevMode or _ZVer.tag == "Development") and not fs.exists("/.noupdate") then InstallOS(true) end
 
 --Update the operating system
 if _ZYX_Old then

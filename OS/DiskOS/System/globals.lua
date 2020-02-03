@@ -8,7 +8,7 @@
 --[[ Version:
 - _ZYX_Version, ZYX-13's current version string.
 - _ZYX_Old, ZYX-13's old version string,
-- _LVer, Parsed ZYX-13 version information, a table with this indexes: major,minor,patch and tag.
+- _ZVer, Parsed ZYX-13 version information, a table with this indexes: major,minor,patch and tag.
 ]]
 
 --[[ Constants:
@@ -38,9 +38,9 @@ local SpriteSheet = require("Libraries.spritesheet")
 --==Version==--
 
 _ZYX_Version, _ZYX_Old = BIOS.getVersion()
-_LVer = {}
-_LVer.major, _LVer.minor, _LVer.patch, _LVer.tag = string.match(_ZYX_Version,"(%d+)%.(%d+)%.(%d+)%-(.+)")
-_LVer.major, _LVer.minor, _LVer.patch = tonumber(_LVer.major), tonumber(_LVer.minor), tonumber(_LVer.patch)
+_ZVer = {}
+_ZVer.major, _ZVer.minor, _ZVer.patch, _ZVer.tag = string.match(_ZYX_Version,"(%d+)%.(%d+)%.(%d+)%-(.+)")
+_ZVer.major, _ZVer.minor, _ZVer.patch = tonumber(_ZVer.major), tonumber(_ZVer.minor), tonumber(_ZVer.patch)
 
 --==Constants==--
 

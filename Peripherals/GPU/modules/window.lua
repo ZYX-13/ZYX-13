@@ -41,7 +41,7 @@ if not love.window.isOpen() then
   if Config.title then
     love.window.setTitle(Config.title)
   else
-    love.window.setTitle("ZYX-13 ".._LVERSION)
+    love.window.setTitle("ZYX-13 ".._ZVERSION)
   end
   love.window.setIcon(love.image.newImageData("icon.png"))
 end

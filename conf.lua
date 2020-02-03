@@ -1,11 +1,11 @@
 --ZYX-13 Version
-_LVer = {
+_ZVer = {
 	major = 1,
 	minor = 1,
 	patch = 1,
 	tag = "Development" --Release, Pre-Relase, Development
 }
-_LVERSION = string.format("V%d.%d.%d-%s",_LVer.major,_LVer.minor,_LVer.patch,_LVer.tag)
+_ZVERSION = string.format("V%d.%d.%d-%s",_ZVer.major,_ZVer.minor,_ZVer.patch,_ZVer.tag)
 
 --BuildConfig
 local build = {}

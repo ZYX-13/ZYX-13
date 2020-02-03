@@ -201,12 +201,12 @@ tabs[1] = {"Info",{
   selectedOption = 1,
   
   options = {
-    {"NormBIOS:      ",string.format("Revision %d%d%d-018",_LVer.major,_LVer.minor,_LVer.patch)},
+    {"NormBIOS:      ",string.format("Revision %d%d%d-018",_ZVer.major,_ZVer.minor,_ZVer.patch)},
     {""}, --Spacer
     {"System Time:   ",function() return os.date("[%H:%M:%S]",os.time()) end},
     {"System Date:   ",function() return os.date("[%d/%m/%Y]",os.time()) end},
     {""}, --Spacer
-    {"ZYX-13 Ver:   ",_LVERSION:sub(2,-1)},
+    {"ZYX-13 Ver:   ",_ZVERSION:sub(2,-1)},
     {"Devmode:       ",DevMode and "Enabled" or "Disabled"},
     {"Custom OS:     ",fs.exists("C:/.noupdate") and "Yes" or "No"},
     {""}, --Spacer

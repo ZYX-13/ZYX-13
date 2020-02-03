@@ -35,7 +35,7 @@ if targets.win or targets.linux or targets.osx then
         if a == "escape" then
           return 1, "Build terminated."
         else
-          openURL("https://github.com/LIKO-12/Nightly/releases")
+          openURL("https://github.com/ZYX-13/Nightly/releases")
         end
       elseif event == "filedropped" then
         if not b then return 1, "Failed to read file." end
@@ -83,10 +83,10 @@ if not gameName then return 1, "Build terminated." end
 local authorName = ask("Author")
 if not authorName then return 1, "Build terminated." end
 
-local windowTitle = ask("Window title","LIKO-12 - "..gameName)
+local windowTitle = ask("Window title","ZYX-13 - "..gameName)
 if not windowTitle then return 1, "Build terminated." end
 
-local appdataName = ask("Appdata name","liko12_"..authorName:lower():gsub(" ","_").."_"..gameName:lower():gsub(" ","_"))
+local appdataName = ask("Appdata name","zyx13_"..authorName:lower():gsub(" ","_").."_"..gameName:lower():gsub(" ","_"))
 if not appdataName then return 1, "Build terminated." end
 
 local packageName
@@ -168,25 +168,25 @@ end
 
 stage("Creating .love file")
 
-log("- Mounting LIKO-12 Sourcecode")
+log("- Mounting ZYX-13 Sourcecode")
 local mountedSRC = BuildUtils.mountSRC()
 if mountedSRC then
   log("mounted successfully")
 else
-  return 1,"Failed to mount LIKO-12 Sourcecode"
+  return 1,"Failed to mount ZYX-13 Sourcecode"
 end
 
-log("- Reading LIKO-12 Sourcecode")
-local likosrc = BuildUtils.filesTree("ZIP:/")
+log("- Reading ZYX-13 Sourcecode")
+local zyxsrc = BuildUtils.filesTree("ZIP:/")
 log("read successfully")
 
-log("- Unmounting LIKO-12 Sourcecode")
+log("- Unmounting ZYX-13 Sourcecode")
 fs.mountZIP()
 log("unmounted successfully")
 
 log("- Generating game.lk12")
 local gameLK12 = LK12Utils.encodeDiskGame(eapi:export(),false,false,eapi.apiVersion)
-likosrc.OS.GameDiskOS["game.lk12"] = gameLK12
+zyxsrc.OS.GameDiskOS["game.lk12"] = gameLK12
 log("generated successfully")
 
 log("- Generating build.json")
@@ -194,31 +194,31 @@ local buildJSON = json:encode_pretty({
   Title = windowTitle,
   Appdata = appdataName
 })
-likosrc["build.json"] = buildJSON
+zyxsrc["build.json"] = buildJSON
 log("generated successfully")
 
 log("- Replacing icon.png")
 if transparentColor then
   palt(0,false) palt(transparentColor,true)
-  likosrc["icon.png"] = iconImages[1]:export()
+  zyxsrc["icon.png"] = iconImages[1]:export()
   palt()
 else
-  likosrc["icon.png"] = iconImages[1]:exportOpaque()
+  zyxsrc["icon.png"] = iconImages[1]:exportOpaque()
 end
 log("replaced successfully")
 
 log("- Removing useless files")
-likosrc.Peripherals.WEB = nil
+zyxsrc.Peripherals.WEB = nil
 log("removed /Peripherals/WEB")
-likosrc.Engine["luajit-request"] = nil
+zyxsrc.Engine["luajit-request"] = nil
 log("removed /Engine/luajit-request")
-likosrc.OS.DiskOS = nil
+zyxsrc.OS.DiskOS = nil
 log("removed /OS/DiskOS")
-likosrc.OS.PoorOS = nil
+zyxsrc.OS.PoorOS = nil
 log("removed /OS/PoorOS")
 
 log("- Packing .love file")
-local gameLove = BuildUtils.packZIP(likosrc)
+local gameLove = BuildUtils.packZIP(zyxsrc)
 log("packed successfully")
 
 local buildDir = term.resolve("./"..os.date("%y%m%d_%H%M",os.time())).."/"
@@ -296,7 +296,7 @@ if targets.linux then
   log("read successfully")
   
   log("- Adding game files")
-  for k,v in pairs(likosrc) do
+  for k,v in pairs(zyxsrc) do
     linuxTree[k] = v
   end
   log("added successfully")
@@ -318,16 +318,16 @@ if targets.osx then
   log("read successfully")
   
   log("- Adding "..gameName..".love")
-  osxTree["LIKO-12.app"].Contents.Resources[gameName..".love"] = gameLove
+  osxTree["ZYX-13.app"].Contents.Resources[gameName..".love"] = gameLove
   log("added successfully")
   
   log("- Patching Info.plist")
-  osxTree["LIKO-12.app"].Contents["Info.plist"] = osxTree["LIKO-12.app"].Contents["Info.plist"]:gsub("LIKO%-12",gameName):gsub("me.ramilego4game.liko12",packageName)
+  osxTree["ZYX-13.app"].Contents["Info.plist"] = osxTree["ZYX-13.app"].Contents["Info.plist"]:gsub("ZYX%-13",gameName):gsub("me.boredom101.zyx13",packageName)
   log("patched successfully")
   
-  log("- Renaming LIKO-12.app")
-  osxTree[gameName..".app"] = osxTree["LIKO-12.app"]
-  osxTree["LIKO-12.app"] = nil
+  log("- Renaming ZYX-13.app")
+  osxTree[gameName..".app"] = osxTree["ZYX-13.app"]
+  osxTree["ZYX-13.app"] = nil
   log("renamed to "..gameName..".app successfully.")
   
   log("- Packing osx build")

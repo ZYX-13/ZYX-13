@@ -12,7 +12,7 @@ if not love.filesystem.getInfo("Miscellaneous","directory") then
   love.filesystem.createDirectory("Miscellaneous")
 end
 
-local _ZYX_Version, _ZYX_Old, _FirstBoot = _LVERSION:sub(2,-1)
+local _ZYX_Version, _ZYX_Old, _FirstBoot = _ZVERSION:sub(2,-1)
 if love.filesystem.getInfo("Miscellaneous/.version","file") then
   _ZYX_Old = love.filesystem.read("Miscellaneous/.version")
   if _ZYX_Old == _ZYX_Version then

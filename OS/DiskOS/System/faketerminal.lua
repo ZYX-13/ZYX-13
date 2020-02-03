@@ -1,8 +1,8 @@
 --This is a fake terminal used by GameDiskOS (fused game mode).
-local _ZYX_TAG = _LVer.tag
+local _ZYX_TAG = _ZVer.tag
 local _ZYX_DEV = (_ZYX_TAG == "Development")
 local _ZYX_PRE = (_ZYX_TAG == "Pre-Release")
-local _ZYX_BUILD = _LVer.major ..".".. _LVer.minor ..".".. _LVer.patch
+local _ZYX_BUILD = _ZVer.major ..".".. _ZVer.minor ..".".. _ZVer.patch
 
 local fw, fh = fontSize()
 
