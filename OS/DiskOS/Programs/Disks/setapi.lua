@@ -22,7 +22,7 @@ end
 local uV = tonumber(args[1])
 if not uV then return 1, "Invalid API version: "..uV end
 if uV ~= math.floor(uV) or uV < 1 then return 1, "Invalid API version: "..uV end
-if uV > _APIVer then return 1, "Current LIKO-12 version doesn't support API v"..uV end
+if uV > _APIVer then return 1, "Current ZYX-13 version doesn't support API v"..uV end
 
 eapi.apiVersion = uV
 color(11) print("API has been successfully set to v"..uV)

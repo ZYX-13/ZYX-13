@@ -1,20 +1,19 @@
 --This is a fake terminal used by GameDiskOS (fused game mode).
-local _LIKO_TAG = _LVer.tag
-local _LIKO_DEV = (_LIKO_TAG == "Development")
-local _LIKO_PRE = (_LIKO_TAG == "Pre-Release")
-local _LIKO_BUILD = _LVer.major ..".".. _LVer.minor ..".".. _LVer.patch
+local _ZYX_TAG = _LVer.tag
+local _ZYX_DEV = (_ZYX_TAG == "Development")
+local _ZYX_PRE = (_ZYX_TAG == "Pre-Release")
+local _ZYX_BUILD = _LVer.major ..".".. _LVer.minor ..".".. _LVer.patch
 
 local fw, fh = fontSize()
 
 clear()
 SpriteGroup(25,1,1,5,1,1,1,0,_SystemSheet)
 printCursor(0,1,0)
-color(_LIKO_DEV and 8 or (_LIKO_PRE and 9 or 11)) print(_LIKO_TAG,5*8+1,3)
+color(_ZYX_DEV and 8 or (_ZYX_PRE and 9 or 11)) print(_ZYX_TAG,5*8+1,3)
 flip() sleep(0.125)
-color(7) print("V".._LIKO_BUILD,(_LIKO_DEV or _LIKO_PRE) and 53 or 43,10)
+color(7) print("V".._ZYX_BUILD,(_ZYX_DEV or _ZYX_PRE) and 53 or 43,10)
 cam("translate",0,3) color(12) print("D",false) color(6) print("isk",false) color(12) print("OS") color(6) cam()
 _SystemSheet:draw(60,(fw+1)*6+1,fh+3) flip() sleep(0.125)
-color(6) print("\nhttps://liko-12.github.io")
 
 flip() sleep(0.0625)
 

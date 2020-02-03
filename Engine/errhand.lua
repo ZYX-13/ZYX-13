@@ -22,7 +22,7 @@ function love.errorhandler(msg)
 		if not success or not status then
 			return
 		end
-    love.window.setTitle("LIKO-12 - Crashed")
+    love.window.setTitle("ZYX-13 - Crashed")
 	end
 
 	-- Reset state.
@@ -64,7 +64,7 @@ function love.errorhandler(msg)
 	local err = {}
 
 	table.insert(err,
-    "[==[ Engine Error ]==]\n\n - Please report this to the developer !\n   Github: http://bit.ly/liko12\n")
+    "[==[ Engine Error ]==]\n\n - Please report this to the developer !\n)
 	table.insert(err, sanitizedmsg)
 
 	if #sanitizedmsg ~= #msg then

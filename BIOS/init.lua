@@ -1,5 +1,5 @@
---The BIOS should control the system of LIKO-12 and load the peripherals--
---For now it's just a simple BIOS to get LIKO-12 working.
+--The BIOS should control the system of ZYX-13 and load the peripherals--
+--For now it's just a simple BIOS to get ZYX-13 working.
 local BuildMode = love.filesystem.getInfo("build.json") and true or false
 
 local json = require("Engine.JSON")
@@ -12,14 +12,14 @@ if not love.filesystem.getInfo("Miscellaneous","directory") then
   love.filesystem.createDirectory("Miscellaneous")
 end
 
-local _LIKO_Version, _LIKO_Old, _FirstBoot = _LVERSION:sub(2,-1)
+local _ZYX_Version, _ZYX_Old, _FirstBoot = _LVERSION:sub(2,-1)
 if love.filesystem.getInfo("Miscellaneous/.version","file") then
-  _LIKO_Old = love.filesystem.read("Miscellaneous/.version")
-  if _LIKO_Old == _LIKO_Version then
-    _LIKO_Old = false
+  _ZYX_Old = love.filesystem.read("Miscellaneous/.version")
+  if _ZYX_Old == _ZYX_Version then
+    _ZYX_Old = false
   end
 else
-  love.filesystem.write("Miscellaneous/.version",tostring(_LIKO_Version))
+  love.filesystem.write("Miscellaneous/.version",tostring(_ZYX_Version))
   _FirstBoot = true
 end
 
@@ -89,7 +89,7 @@ local function P(per,m,conf)
   return success, API, yAPI, devkit
 end
 
---Initialize a peripheral, and crash LIKO-12 if failed.
+--Initialize a peripheral, and crash ZYX-13 if failed.
 local function PA(...)
   local ok, api, yapi, devkit = P(...)
   if ok then
@@ -149,21 +149,21 @@ do
     return true, funcList
   end
   
-  --Returns LIKO-12's Version.
+  --Returns ZYX-13's Version.
   function yAPIS.BIOS.getVersion()
-    return true, _LIKO_Version, _LIKO_Old
+    return true, _ZYX_Version, _ZYX_Old
   end
   
-  --Tells if this is the first boot of LIKO-12 ever.
+  --Tells if this is the first boot of ZYX-13 ever.
   function yAPIS.BIOS.isFirstBoot()
     return true, _FirstBoot or false
   end
   
-  --Returns LIKO-12_Source.love data.
+  --Returns ZYX-13_Source.love data.
   function yAPIS.BIOS.getSRC()
-    if not love.filesystem.getInfo("/Miscellaneous/LIKO-12_Source.love") then return true, false, "LIKO-12_Source.love doesn't exist ! Try to reboot." end
+    if not love.filesystem.getInfo("/Miscellaneous/ZYX-13_Source.love") then return true, false, "ZYX-13_Source.love doesn't exist ! Try to reboot." end
     
-    return true, love.filesystem.read("/Miscellaneous/LIKO-12_Source.love")
+    return true, love.filesystem.read("/Miscellaneous/ZYX-13_Source.love")
   end
   
 end

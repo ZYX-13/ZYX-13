@@ -1,8 +1,8 @@
 --The terminal !--
-local _LIKO_TAG = _LVer.tag
-local _LIKO_DEV = (_LIKO_TAG == "Development")
-local _LIKO_PRE = (_LIKO_TAG == "Pre-Release")
-local _LIKO_BUILD = _LVer.major ..".".. _LVer.minor ..".".. _LVer.patch
+local _ZYX_TAG = _LVer.tag
+local _ZYX_DEV = (_ZYX_TAG == "Development")
+local _ZYX_PRE = (_ZYX_TAG == "Pre-Release")
+local _ZYX_BUILD = _LVer.major ..".".. _LVer.minor ..".".. _LVer.patch
 
 local PATH = "D:/Programs/;C:/Programs/;" --The system PATH variable, used by the terminal to search for programs.
 local curdrive, curdir, curpath = "D", "/", "D:/" --The current active path in the terminal.
@@ -22,7 +22,7 @@ local function nextPath(p)
   return p:gmatch("(.-);")
 end
 
-local fw, fh = fontSize() --The LIKO-12 GPU Font size.
+local fw, fh = fontSize() --The ZYX-13 GPU Font size.
 
 local history = {} --The history of commands.
 local hispos --The current item in the history.
@@ -69,12 +69,11 @@ function term.init()
   clear()
   SpriteGroup(25,1,1,5,1,1,1,0,_SystemSheet)
   printCursor(0,1,0)
-  color(_LIKO_DEV and 8 or (_LIKO_PRE and 9 or 11)) print(_LIKO_TAG,5*8+1,3)
+  color(_ZYX_DEV and 8 or (_ZYX_PRE and 9 or 11)) print(_ZYX_TAG,5*8+1,3)
   flip() sleep(0.125)
-  color(7) print("V".._LIKO_BUILD,(_LIKO_DEV or _LIKO_PRE) and 53 or 43,10)
+  color(7) print("V".._ZYX_BUILD,(_ZYX_DEV or _ZYX_PRE) and 53 or 43,10)
   cam("translate",0,3) color(12) print("D",false) color(6) print("isk",false) color(12) print("OS") color(6) cam()
   _SystemSheet:draw(60,(fw+1)*6+1,fh+3) flip() sleep(0.125)
-  color(6) print("\nhttps://liko-12.github.io")
 
   flip() sleep(0.0625)
   if fs.exists("D:/autoexec.lua") then
@@ -82,8 +81,8 @@ function term.init()
   elseif fs.exists("C:/autoexec.lua") then
     term.executeFile("C:/autoexec.lua")
   else
-    if _LIKO_Old then
-      color(7) print("\n Updated LIKO-12 Successfully.\n Type ",false)
+    if _ZYX_Old then
+      color(7) print("\n Updated ZYX-13 Successfully.\n Type ",false)
       color(6) print("help Whatsnew",false)
       color(7) print(" for changelog.\n")
     else

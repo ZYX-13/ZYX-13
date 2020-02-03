@@ -23,7 +23,7 @@ local utf8Char = utf8.char
 local utf8Len = utf8.len
 
 --==Varss Constants==--
-local _LIKO_W, _LIKO_H = WindowVars.LIKO_W, WindowVars.LIKO_H
+local _ZYX_W, _ZYX_H = WindowVars.ZYX_W, WindowVars.ZYX_H
 local Verify = SharedVars.Verify
 local ofs = CalibrationVars.Offsets
 local UnbindVRAM = VRamVars.UnbindVRAM
@@ -47,12 +47,12 @@ _FontChars = escapeASCII(table.concat(_FontChars))
 
 local _FontPath, _FontExtraSpacing = Config._FontPath or Path.."fonts/font4x6.png", Config._FontExtraSpacing or 1 --Font image path, and how many extra spacing pixels between every character.
 
-local _Font = lg.newImageFont(_FontPath, _FontChars, _FontExtraSpacing) --Create the default liko12 font.
+local _Font = lg.newImageFont(_FontPath, _FontChars, _FontExtraSpacing) --Create the default zyx13 font.
 
 lg.setFont(_Font) --Activate the default font.
 
 local printCursor = {x=0,y=0,bgc=0} --The print grid cursor pos.
-local TERM_W, TERM_H = math.floor(_LIKO_W/(_FontW+1)), math.floor(_LIKO_H/(_FontH+1)) --The size of characters that the screen can fit.
+local TERM_W, TERM_H = math.floor(_ZYX_W/(_FontW+1)), math.floor(_ZYX_H/(_FontH+1)) --The size of characters that the screen can fit.
 
 --==GPU Printing Dimensions API==--
 

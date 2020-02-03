@@ -19,13 +19,13 @@ local CPUKit = Config.CPUKit
 
 local _Mobile = love.system.getOS() == "Android" or love.system.getOS() == "iOS" or Config._Mobile
 
-local _LIKO_W, _LIKO_H = Config._LIKO_W or 192, Config._LIKO_H or 128 --LIKO-12 screen dimensions.
-WindowVars.LIKO_X, WindowVars.LIKO_Y = 0,0 --LIKO-12 screen padding in the HOST screen.
+local _ZYX_W, _ZYX_H = Config._ZYX_W or 192, Config._ZYX_H or 128 --ZYX-13 screen dimensions.
+WindowVars.ZYX_X, WindowVars.ZYX_Y = 0,0 --ZYX-13 screen padding in the HOST screen.
 
-local _PixelPerfect = Config._PixelPerfect --If the LIKO-12 screen must be scaled pixel perfect.
-WindowVars.LIKOScale = mathFloor(Config._LIKOScale or 3) --The LIKO12 screen scale to the host screen scale.
+local _PixelPerfect = Config._PixelPerfect --If the ZYX-13 screen must be scaled pixel perfect.
+WindowVars.ZYXScale = mathFloor(Config._ZYXScale or 3) --The ZYX13 screen scale to the host screen scale.
 
-WindowVars.Width, WindowVars.Height = _LIKO_W*WindowVars.LIKOScale, _LIKO_H*WindowVars.LIKOScale --The host window size.
+WindowVars.Width, WindowVars.Height = _ZYX_W*WindowVars.ZYXScale, _ZYX_H*WindowVars.ZYXScale --The host window size.
 if _Mobile then WindowVars.Width, WindowVars.Height = 0,0 end
 
 --==Window creation==--
@@ -34,14 +34,14 @@ if not love.window.isOpen() then
   love.window.setMode(WindowVars.Width,WindowVars.Height,{
     vsync = 1,
     resizable = true,
-    minwidth = _LIKO_W,
-    minheight = _LIKO_H
+    minwidth = _ZYX_W,
+    minheight = _ZYX_H
   })
   
   if Config.title then
     love.window.setTitle(Config.title)
   else
-    love.window.setTitle("LIKO-12 ".._LVERSION)
+    love.window.setTitle("ZYX-13 ".._LVERSION)
   end
   love.window.setIcon(love.image.newImageData("icon.png"))
 end
@@ -64,13 +64,13 @@ end)
 --Hook the resize function
 events.register("love:resize",function(w,h) --Do some calculations
   WindowVars.Width, WindowVars.Height = w, h
-  local TSX, TSY = w/_LIKO_W, h/_LIKO_H --TestScaleX, TestScaleY
+  local TSX, TSY = w/_ZYX_W, h/_ZYX_H --TestScaleX, TestScaleY
   
-  WindowVars.LIKOScale = (TSX < TSY) and TSX or TSY
-  if _PixelPerfect then WindowVars.LIKOScale = mathFloor(WindowVars.LIKOScale) end
+  WindowVars.ZYXScale = (TSX < TSY) and TSX or TSY
+  if _PixelPerfect then WindowVars.ZYXScale = mathFloor(WindowVars.ZYXScale) end
   
-  WindowVars.LIKO_X, WindowVars.LIKO_Y = (WindowVars.Width-_LIKO_W*WindowVars.LIKOScale)/2, (WindowVars.Height-_LIKO_H*WindowVars.LIKOScale)/2
-  if _Mobile then WindowVars.LIKO_Y, RenderVars.AlwaysDrawTimer = 0, 1 end
+  WindowVars.ZYX_X, WindowVars.ZYX_Y = (WindowVars.Width-_ZYX_W*WindowVars.ZYXScale)/2, (WindowVars.Height-_ZYX_H*WindowVars.ZYXScale)/2
+  if _Mobile then WindowVars.ZYX_Y, RenderVars.AlwaysDrawTimer = 0, 1 end
   
   RenderVars.ShouldDraw = true
 end)
@@ -104,8 +104,8 @@ events.register("love:keypressed", function(key, scancode,isrepeat)
         fullscreen = false,
         vsync = 1,
         resizable = true,
-        minwidth = _LIKO_W,
-        minheight = _LIKO_H
+        minwidth = _ZYX_W,
+        minheight = _ZYX_H
       })
     else --Go fullscreen
       lastWidth, lastHeight = love.window.getMode()
@@ -126,28 +126,28 @@ end)
 --==Graphics Initializations==--
 love.graphics.clear(0,0,0,1) --Clear the host screen.
 
-events.trigger("love:resize", WindowVars.Width, WindowVars.Height) --Calculate LIKO12 scale to the host window for the first time.
+events.trigger("love:resize", WindowVars.Width, WindowVars.Height) --Calculate ZYX13 scale to the host window for the first time.
 
 --==GPU Window API==--
-function GPU.screenSize() return _LIKO_W, _LIKO_H end
-function GPU.screenWidth() return _LIKO_W end
-function GPU.screenHeight() return _LIKO_H end
+function GPU.screenSize() return _ZYX_W, _ZYX_H end
+function GPU.screenWidth() return _ZYX_W end
+function GPU.screenHeight() return _ZYX_H end
 
 --==Helper functions for WindowVars==--
-function WindowVars.HostToLiko(x,y) --Convert a position from HOST screen to LIKO12 screen.
-  return mathFloor((x - WindowVars.LIKO_X)/WindowVars.LIKOScale), mathFloor((y - WindowVars.LIKO_Y)/WindowVars.LIKOScale)
+function WindowVars.HostToZyx(x,y) --Convert a position from HOST screen to ZYX13 screen.
+  return mathFloor((x - WindowVars.ZYX_X)/WindowVars.ZYXScale), mathFloor((y - WindowVars.ZYX_Y)/WindowVars.ZYXScale)
 end
 
-function WindowVars.LikoToHost(x,y) --Convert a position from LIKO12 screen to HOST
-  return mathFloor(x*WindowVars.LIKOScale + WindowVars.LIKO_X), mathFloor(y*WindowVars.LIKOScale + WindowVars.LIKO_Y)
+function WindowVars.ZyxToHost(x,y) --Convert a position from ZYX13 screen to HOST
+  return mathFloor(x*WindowVars.ZYXScale + WindowVars.ZYX_X), mathFloor(y*WindowVars.ZYXScale + WindowVars.ZYX_Y)
 end
 
 --==GPUVars Exports==--
-WindowVars.LIKO_W, WindowVars.LIKO_H = _LIKO_W, _LIKO_H
+WindowVars.ZYX_W, WindowVars.ZYX_H = _ZYX_W, _ZYX_H
 
 --==DevKit Exports==--
-DevKit._LIKO_W = _LIKO_W
-DevKit._LIKO_H = _LIKO_H
+DevKit._ZYX_W = _ZYX_W
+DevKit._ZYX_H = _ZYX_H
 function DevKit.DevKitDraw(bool)
   RenderVars.DevKitDraw = bool
 end

@@ -14,10 +14,7 @@ end
 addLibrary(_SystemDrive..":/Libraries/lume.lua","lume")
 addLibrary(_SystemDrive..":/Libraries/middleclass.lua","class")
 addLibrary(_SystemDrive..":/Libraries/bump.lua","bump")
-addLibrary(_SystemDrive..":/Libraries/likocam.lua","likocam")
 addLibrary(_SystemDrive..":/Libraries/JSON.lua","JSON")
-addLibrary(_SystemDrive..":/Libraries/luann.lua","luann")
-addLibrary(_SystemDrive..":/Libraries/genetic.lua","geneticAlgo")
 addLibrary(_SystemDrive..":/Libraries/vector.lua","vector")
 addLibrary(_SystemDrive..":/Libraries/spritesheet.lua","spritesheet")
 

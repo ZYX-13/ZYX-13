@@ -4,7 +4,7 @@ if not WEB then return end --WEB Peripheral not available
 
 --Localized Lua Library
 
---Localized LIKO-12 Peripherals
+--Localized ZYX-13 Peripherals
 local web = WEB
 
 --Luasocket libraries

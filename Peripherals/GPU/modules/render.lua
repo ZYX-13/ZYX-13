@@ -26,13 +26,13 @@ local _DrawPalette = PaletteVars.DrawPalette
 local _ImagePalette = PaletteVars.ImagePalette
 local _ImageTransparent = PaletteVars.ImageTransparent
 local _DisplayPalette = PaletteVars.DisplayPalette
-local _LIKO_W = WindowVars.LIKO_W
-local _LIKO_H = WindowVars.LIKO_H
+local _ZYX_W = WindowVars.ZYX_W
+local _ZYX_H = WindowVars.ZYX_H
 local UnbindVRAM = VRamVars.UnbindVRAM
 local setColor = SharedVars.setColor
 local _GetColor = PaletteVars.GetColor
-local _LikoToHost = WindowVars.LikoToHost
-local _HostToLiko = WindowVars.HostToLiko
+local _ZyxToHost = WindowVars.ZyxToHost
+local _HostToZyx = WindowVars.HostToZyx
 local _CursorsCache = CursorVars.CursorsCache
 
 --==Vars Variables==--
@@ -58,12 +58,12 @@ local _Flipped = false --This flag means that the screen has been flipped
 
 local _CanvasFormats = lg.getCanvasFormats()
 
-local _ScreenCanvas = lg.newCanvas(_LIKO_W, _LIKO_H,{
+local _ScreenCanvas = lg.newCanvas(_ZYX_W, _ZYX_H,{
     format = (_CanvasFormats.r8 and "r8" or "normal"),
     dpiscale = 1
   }) --Create the screen canvas.
 
-local _BackBuffer = lg.newCanvas(_LIKO_W, _LIKO_H,{dpiscale=1}) --BackBuffer for post shaders.
+local _BackBuffer = lg.newCanvas(_ZYX_W, _ZYX_H,{dpiscale=1}) --BackBuffer for post shaders.
 
 --==Render Shaders==--
 
@@ -106,8 +106,8 @@ end
 
 --==Graphics Initialization==--
 
-lg.setCanvas{_ScreenCanvas,stencil=true} --Activate LIKO12 canvas.
-lg.clear(0,0,0,1) --Clear LIKO12 screen for the first time.
+lg.setCanvas{_ScreenCanvas,stencil=true} --Activate ZYX13 canvas.
+lg.clear(0,0,0,1) --Clear ZYX13 screen for the first time.
 
 lg.setShader(_DrawShader) --Activate the drawing shader.
 
@@ -156,36 +156,36 @@ events.register("love:graphics",function()
       lg.clear(0,0,0,0)
       lg.draw(_ScreenCanvas) --Draw the canvas.
       if CursorVars.Cursor ~= "none" then
-        local mx, my = _HostToLiko(love.mouse.getPosition())
+        local mx, my = _HostToZyx(love.mouse.getPosition())
         local hotx, hoty = _CursorsCache[CursorVars.Cursor].hx, _CursorsCache[CursorVars.Cursor].hy
         lg.draw(_CursorsCache[CursorVars.Cursor].gifimg, ofs.image[1]+mx-hotx, ofs.image[2]+my-hoty)
       end
       if PShadersVars.PostShaderTimer then PShadersVars.ActiveShader:send("time",math.floor(PShadersVars.PostShaderTimer*1000)) end
       lg.setShader(PShadersVars.ActiveShader)
       lg.setCanvas()
-      lg.draw(_BackBuffer, WindowVars.LIKO_X+ofs.screen[1], WindowVars.LIKO_Y+ofs.screen[2], 0, WindowVars.LIKOScale, WindowVars.LIKOScale) --Draw the canvas.
+      lg.draw(_BackBuffer, WindowVars.ZYX_X+ofs.screen[1], WindowVars.ZYX_Y+ofs.screen[2], 0, WindowVars.ZYXScale, WindowVars.ZYXScale) --Draw the canvas.
       lg.setShader(_DisplayShader)
     else
-      lg.draw(_ScreenCanvas, WindowVars.LIKO_X+ofs.screen[1], WindowVars.LIKO_Y+ofs.screen[2], 0, WindowVars.LIKOScale, WindowVars.LIKOScale) --Draw the canvas.
+      lg.draw(_ScreenCanvas, WindowVars.ZYX_X+ofs.screen[1], WindowVars.ZYX_Y+ofs.screen[2], 0, WindowVars.ZYXScale, WindowVars.ZYXScale) --Draw the canvas.
     end
 
     if CursorVars.GrappedCursor and CursorVars.Cursor ~= "none" and not PShadersVars.ActiveShader then --Must draw the cursor using the gpu
-      local mx, my = _HostToLiko(love.mouse.getPosition())
-      mx,my = _LikoToHost(mx,my)
-      local hotx, hoty = _CursorsCache[CursorVars.Cursor].hx*WindowVars.LIKOScale, _CursorsCache[CursorVars.Cursor].hy*WindowVars.LIKOScale --Converted to host scale
-      lg.draw(_CursorsCache[CursorVars.Cursor].gifimg, ofs.image[1]+mx-hotx, ofs.image[2]+my-hoty,0,WindowVars.LIKOScale,WindowVars.LIKOScale)
+      local mx, my = _HostToZyx(love.mouse.getPosition())
+      mx,my = _ZyxToHost(mx,my)
+      local hotx, hoty = _CursorsCache[CursorVars.Cursor].hx*WindowVars.ZYXScale, _CursorsCache[CursorVars.Cursor].hy*WindowVars.ZYXScale --Converted to host scale
+      lg.draw(_CursorsCache[CursorVars.Cursor].gifimg, ofs.image[1]+mx-hotx, ofs.image[2]+my-hoty,0,WindowVars.ZYXScale,WindowVars.ZYXScale)
     end
 
     lg.setShader() --Deactivate the display shader.
 
     if MiscVars.MSGTimer > 0 then
       setColor(_GetColor(MiscVars.LastMSGColor))
-      lg.rectangle("fill", WindowVars.LIKO_X+ofs.screen[1]+ofs.rect[1], WindowVars.LIKO_Y+ofs.screen[2] + (_LIKO_H-8) * WindowVars.LIKOScale + ofs.rect[2],
-        _LIKO_W * WindowVars.LIKOScale + ofs.rectSize[1], 8*WindowVars.LIKOScale + ofs.rectSize[2])
+      lg.rectangle("fill", WindowVars.ZYX_X+ofs.screen[1]+ofs.rect[1], WindowVars.ZYX_Y+ofs.screen[2] + (_ZYX_H-8) * WindowVars.ZYXScale + ofs.rect[2],
+        _ZYX_W * WindowVars.ZYXScale + ofs.rectSize[1], 8*WindowVars.ZYXScale + ofs.rectSize[2])
       setColor(_GetColor(MiscVars.LastMSGTColor))
       lg.push()
-      lg.translate(WindowVars.LIKO_X+ofs.screen[1]+ofs.print[1]+WindowVars.LIKOScale, WindowVars.LIKO_Y+ofs.screen[2] + (_LIKO_H-7) * WindowVars.LIKOScale + ofs.print[2])
-      lg.scale(WindowVars.LIKOScale,WindowVars.LIKOScale)
+      lg.translate(WindowVars.ZYX_X+ofs.screen[1]+ofs.print[1]+WindowVars.ZYXScale, WindowVars.ZYX_Y+ofs.screen[2] + (_ZYX_H-7) * WindowVars.ZYXScale + ofs.print[2])
+      lg.scale(WindowVars.ZYXScale,WindowVars.ZYXScale)
       lg.print(MiscVars.LastMSG,0,0)
       lg.pop()
       lg.setColor(1,1,1,1)

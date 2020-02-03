@@ -2,7 +2,7 @@ local source = (...)
 
 if not source or source == "-?" then
   printUsage(
-    "update_disk <disk>","Updates an outdated LIKO-12 disk"
+    "update_disk <disk>","Updates an outdated ZYX-13 disk"
   )
   return
 end

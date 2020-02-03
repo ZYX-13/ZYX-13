@@ -1,6 +1,6 @@
 if (...) == "-?" then
   printUsage(
-    "appdata","Open LIKO-12 appdata folder in the host os explorer",
+    "appdata","Open ZYX-13 appdata folder in the host os explorer",
     "appdata --path","Shows the real path of the appdata folder"
   )
   return

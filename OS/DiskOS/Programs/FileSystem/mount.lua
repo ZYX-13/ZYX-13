@@ -10,7 +10,7 @@ end
 
 if #args < 1 or args[1] == "-?" then
   printUsage("mount <zipPath>","Mounts a .ZIP file to the ZIP drive.",
-             "mount --LIKOSRC","Mounts LIKO-12 SourceCode to the ZIP drive.",
+             "mount --ZYXSRC","Mounts ZYX-13 SourceCode to the ZIP drive.",
              "mount","Unmount the .ZIP file from the ZIP drive.")
   color(7) print("Type 'drives' to check the current mounted ZIP")
   return
@@ -19,7 +19,7 @@ end
 local term = require("terminal")
 
 local source, zipData = args[1]
-if source == "--LIKOSRC" then
+if source == "--ZYXSRC" then
   zipData = BIOS.getSRC() or ""
 else
   source = term.resolve(source)

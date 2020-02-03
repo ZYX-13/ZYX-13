@@ -6,7 +6,7 @@ max_line_length = false --Disable max line length warnings.
 std = "luajit+love" --Lua and LuaJIT standard environment.
 
 globals = {
-	"_LVer","_LVERSION", --LIKO-12 Version variables.
+	"_LVer","_LVERSION", --ZYX-13 Version variables.
 	
 	--Missing love globals.
 	
@@ -43,7 +43,7 @@ ignore = {
 	"613", --Trailing whitespace in a string.
 }
 
---Configuration for LIKO-12 operating systems.
+--Configuration for ZYX-13 operating systems.
 files["OS"] = {
 	global = false,
 	unused = false,

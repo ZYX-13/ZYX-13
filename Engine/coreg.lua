@@ -1,8 +1,8 @@
---Corouting Registry: this file is responsible for providing LIKO12 it's api--
+--Corouting Registry: this file is responsible for providing ZYX13 it's api--
 local coreg = {reg={}}
 
 local registry = {}
-local likoCoroutine, likoGlob
+local zyxCoroutine, zyxGlob
 
 local sandbox = require("Engine.sandbox")
 
@@ -11,13 +11,13 @@ local function shiftTable(a,b)b=b-1;for c=b+1,#a+b do a[c-b]=a[c]end end
 
 --Returns the current active coroutine if exists
 function coreg.getCoroutine()
-  return likoCoroutine, likoGlob
+  return zyxCoroutine, zyxGlob
 end
 
 --Sets the current active coroutine
 function coreg.setCoroutine(co,glob)
-  likoCoroutine  = co or likoCoroutine
-  likoGlob = glob or likoGlob
+  zyxCoroutine  = co or zyxCoroutine
+  zyxGlob = glob or zyxGlob
   return coreg
 end
 
@@ -25,15 +25,15 @@ end
 function coreg.resumeCoroutine(...)
   local lastargs = {...}
   while true do
-    if not likoCoroutine or coroutine.status(likoCoroutine) == "dead" then
-      return error(likoCoroutine and "The coroutine is dead" or "No coroutine to execute !")
+    if not zyxCoroutine or coroutine.status(zyxCoroutine) == "dead" then
+      return error(zyxCoroutine and "The coroutine is dead" or "No coroutine to execute !")
     end
     
-    local args = {coroutine.resume(likoCoroutine,unpack(lastargs))}
+    local args = {coroutine.resume(zyxCoroutine,unpack(lastargs))}
     
     if not args[1] then error(args[2]) end --Should have a better error handelling
     
-    if coroutine.status(likoCoroutine) == "dead" then
+    if coroutine.status(zyxCoroutine) == "dead" then
       
       --The coroutine finished, we hope that a new one has been set.
       
@@ -57,7 +57,7 @@ end
 
 --Sandbox a function with the current coroutine environment.
 function coreg.sandbox(f)
-  if likoCoroutine and likoGlob then setfenv(f,likoGlob) return end
+  if zyxCoroutine and zyxGlob then setfenv(f,zyxGlob) return end
   local GLOB = sandbox(coreg.getCoroutine) --Create a new sandbox.
   
   setfenv(f,GLOB)
@@ -69,7 +69,7 @@ Register a value to a specific key.
 If the value is a table, then the values in the table will be registered at key:tableValueKey
 If the value is a function, then it will be called instantly,
   and it must return true as the first argument to tell that it ran successfully.
-Else, the value will be returned to the liko12 code.
+Else, the value will be returned to the zyx13 code.
 ]]
 function coreg.register(value,key)
   key = key or "none"

@@ -1,7 +1,7 @@
 -- GIF encoder specialized for PICO-8
 -- by gamax92.
--- Updated for liko12 by RamiLego4Game
-local _GIFScale, _LIKO_W, _LIKO_H = ...
+
+local _GIFScale, _ZYX_W, _ZYX_H = ...
 
 local lshift, rshift, band = bit.lshift, bit.rshift, bit.band
 local strchar = string.char
@@ -188,13 +188,13 @@ function giflib.new(filename,colorset)
 	if not file then
 		return nil, err
 	end
-	file:write("GIF89a"..num2str(_LIKO_W*_GIFScale)..num2str(_LIKO_H*_GIFScale).."\243\0\0")
+	file:write("GIF89a"..num2str(_ZYX_W*_GIFScale)..num2str(_ZYX_H*_GIFScale).."\243\0\0")
 	for i=0, 15 do
 		local palette=colorset[i]
 		file:write(strchar(palette[1], palette[2], palette[3]))
 	end
 	file:write("\33\255\11NETSCAPE2.0\3\1\0\0\0") --For gif auto looping
-	local last=love.image.newImageData(_LIKO_W*_GIFScale, _LIKO_H*_GIFScale)
+	local last=love.image.newImageData(_ZYX_W*_GIFScale, _ZYX_H*_GIFScale)
 	return setmetatable({filename=filename, file=file, last=last, first=true}, gifmt)
 end
 
@@ -203,7 +203,7 @@ function giflib.continue(filename)
 	if not file then
 		return nil, err
 	end
-	local last=love.image.newImageData(_LIKO_W*_GIFScale, _LIKO_H*_GIFScale)
+	local last=love.image.newImageData(_ZYX_W*_GIFScale, _ZYX_H*_GIFScale)
 	return setmetatable({filename=filename, file=file, last=last, first=true}, gifmt)
 end
 

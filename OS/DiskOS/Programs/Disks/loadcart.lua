@@ -1,8 +1,8 @@
---A program to load old LIKO-12 cart
+--A program to load old ZYX-13 cart
 local args = {...}
 if #args < 1 or args[1] == "-?" then
  printUsage(
-  "loadCart filename", "Load old LIKO-12 V0.0.5A Cart"
+  "loadCart filename", "Load old ZYX-13 V0.0.5A Cart"
  )
  return
 end

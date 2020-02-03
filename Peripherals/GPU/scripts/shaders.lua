@@ -1,4 +1,4 @@
---This file contains the shaders used by the LIKO-12 GPU.
+--This file contains the shaders used by the ZYX-13 GPU.
 --Note: Those are modified version of picolove shaders.
 
 local shaders = {}

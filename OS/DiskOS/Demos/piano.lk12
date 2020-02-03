@@ -56,7 +56,7 @@ function _draw()
  _drawPiano()
  
  color(12)
- print("LIKO-12 Piano V2.0",5,37)
+ print("ZYX-13 Piano V2.0",5,37)
  
  color(7)
  print("OCT: "..oct,5,55)

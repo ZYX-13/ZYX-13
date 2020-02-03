@@ -66,8 +66,8 @@ return function(config)
     
     --Better button position when in protrait
     if protrait then
-      local likoH = (GPUKit._LIKO_H*(w/GPUKit._LIKO_W)) --The LIKO-12 screen size.
-      dpad_cy = likoH + (h - likoH)/2 --Calculate the dpad center Y coord.
+      local zyxH = (GPUKit._ZYX_H*(w/GPUKit._ZYX_W)) --The ZYX-13 screen size.
+      dpad_cy = zyxH + (h - zyxH)/2 --Calculate the dpad center Y coord.
     else
       dpad_cy = h/2 --Calculate the dpad center Y coord.
     end

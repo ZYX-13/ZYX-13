@@ -1,4 +1,4 @@
---Liko12 Help System !
+--Zyx13 Help System !
 if (...) == "-?" then
   printUsage(
     "help","Displays the help info",
@@ -153,7 +153,7 @@ else
 end
 
 doc = doc:gsub("\r\n","\n")
-doc = doc:gsub("\\LIKO%-12","\\CL\\8I\\BK\\9O\\7-\\F12")
+doc = doc:gsub("\\ZYX%-13","\\CL\\8I\\BK\\9O\\7-\\F12")
 doc = doc:gsub("\\DiskOS","\\CD\\6isk\\COS")
 
 color(7)

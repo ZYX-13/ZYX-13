@@ -11,8 +11,8 @@ ConstantValue, **DynamicValue**
 - Verify
 
 #Window:
-- LIKO_W, LIKO_H, **LIKO_X**, **LIKO_Y**, **LIKO_Scale**, **Width**, **Height**
-- HostToLiko, LikoToHost
+- ZYX_W, ZYX_H, **ZYX_X**, **ZYX_Y**, **ZYX_Scale**, **Width**, **Height**
+- HostToZyx, ZyxToHost
 
 #Calibration:
 - Offsets

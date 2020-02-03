@@ -28,19 +28,19 @@ ImageDataVars.weakImageData = weakImageData
 
 --==Helper Functions==--
 
---Convert from LIKO12 palette to real colors.
+--Convert from ZYX13 palette to real colors.
 local function _ExportImage(_,_, r)
   r = mathFloor(r*255)
   if _ImageTransparent[r+1] == 0 then return 0,0,0,0 end
   return colorTo1(_ColorSet[r])
 end
 
---Convert from LIKO-12 palette to real colors ignoring transparent colors.
+--Convert from ZYX-13 palette to real colors ignoring transparent colors.
 local function _ExportImageOpaque(_,_, r)
   return colorTo1(_ColorSet[mathFloor(r*255)])
 end
 
---Convert from real colors to LIKO-12 palette
+--Convert from real colors to ZYX-13 palette
 local function _ImportImage(_,_, r,g,b,a)
   return _GetColorID(colorTo255(r,g,b,a))/255,0,0,1
 end
@@ -163,7 +163,7 @@ function GPU.imagedata(w,h)
   if h and tonumber(w) then
     imageData = love.image.newImageData(w,h)
     imageData:mapPixel(function() return 0,0,0,1 end)
-  elseif type(w) == "string" then --Load specialized liko12 image format
+  elseif type(w) == "string" then --Load specialized zyx13 image format
     if w:sub(0,12) == "LK12;GPUIMG;" then
       w = w:gsub("\n","")
       --luacheck: push ignore 422

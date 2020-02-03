@@ -15,7 +15,7 @@ local RenderVars = GPUVars.Render
 local SharedVars = GPUVars.Shared
 
 --==Varss Constants==--
-local _LIKO_W, _LIKO_H = WindowVars.LIKO_W, WindowVars.LIKO_H
+local _ZYX_W, _ZYX_H = WindowVars.ZYX_W, WindowVars.ZYX_H
 local systemMessage = MiscVars.systemMessage
 local Verify = SharedVars.Verify
 
@@ -29,7 +29,7 @@ local _LabelCaptureKey = Config._LabelCaptureKey or "f6"
 --==GPU Screenshot API==--
 
 function GPU.screenshot(x,y,w,h)
-  x, y, w, h = x or 0, y or 0, w or _LIKO_W, h or _LIKO_H
+  x, y, w, h = x or 0, y or 0, w or _ZYX_W, h or _ZYX_H
   x = Verify(x,"X","number",true)
   y = Verify(y,"Y","number",true)
   w = Verify(w,"W","number",true)
@@ -44,11 +44,11 @@ end
 
 local newImageHandler = love.filesystem.load(Path.."scripts/imageHandler.lua")
 
-local LabelImage = love.image.newImageData(_LIKO_W, _LIKO_H)
+local LabelImage = love.image.newImageData(_ZYX_W, _ZYX_H)
 
 LabelImage:mapPixel(function() return 0,0,0,1 end)
 
-local LIMGHandler; LIMGHandler = newImageHandler(_LIKO_W,_LIKO_H,function() end,function() end)
+local LIMGHandler; LIMGHandler = newImageHandler(_ZYX_W,_ZYX_H,function() end,function() end)
 
 LIMGHandler("setImage",0,0,LabelImage)
 
@@ -66,11 +66,11 @@ events.register("love:keypressed", function(key)
     local sc = GPU.screenshot()
     sc = sc:enlarge(_ScreenshotScale)
     local png = sc:exportOpaque()
-    love.filesystem.write("/Screenshots/LIKO12-"..os.time()..".png",png)
+    love.filesystem.write("/Screenshots/ZYX13-"..os.time()..".png",png)
     systemMessage("Screenshot has been taken successfully",2)
   elseif key == _LabelCaptureKey then
     lg.setCanvas()
-    LabelImage:paste(RenderVars.ScreenCanvas:newImageData(),0,0,0,0,_LIKO_W,_LIKO_H)
+    LabelImage:paste(RenderVars.ScreenCanvas:newImageData(),0,0,0,0,_ZYX_W,_ZYX_H)
     lg.setCanvas{RenderVars.ScreenCanvas,stencil=true}
     systemMessage("Captured label image successfully !",2)
   end

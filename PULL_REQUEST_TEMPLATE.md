@@ -8,7 +8,7 @@ A clear and concise description of what this pullrequest adds
 Please add screenshots/gifs if possible.
 
 **Modified Section:**
-Could be `LIKO-12's Engine`, `BIOS`, `DiskOS`, `PoorOS` or `GameDiskOS`.
+Could be `ZYX-13's Engine`, `BIOS`, `DiskOS`, `PoorOS` or `GameDiskOS`.
 
 ---Please read and delete this text before creating this pull request---
 Thanks a lot for the pull request you are going to do!

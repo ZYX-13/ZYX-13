@@ -1,4 +1,4 @@
---DiskOS LIKO-12 GUI Library
+--DiskOS ZYX-13 GUI Library
 local class = require("Libraries.middleclass")
 
 local path = (...)

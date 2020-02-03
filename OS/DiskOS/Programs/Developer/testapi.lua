@@ -1,6 +1,6 @@
---This is a program for testing LIKO-12 API.
+--This is a program for testing ZYX-13 API.
 if tostring((...) or false) == "-?" then
-  printUsage("testapi","A WIP Program for testing LIKO-12 API, Used by the developer.")
+  printUsage("testapi","A WIP Program for testing ZYX-13 API, Used by the developer.")
   return
 end
 
@@ -53,7 +53,7 @@ local function add(func) table.insert(tests,func) end
 -----------------------------------------------------------------------------------------
 --==Intro==--
 local function _intro()
-  print("This is a program for testing LIKO-12 api functionality")
+  print("This is a program for testing ZYX-13 api functionality")
 end
 add(_intro)
 

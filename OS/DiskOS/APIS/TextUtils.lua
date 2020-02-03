@@ -1,7 +1,7 @@
 --Text Utilities.
 
 --Variables.
-local fw, fh = fontSize() --The LIKO-12 GPU Font size.
+local fw, fh = fontSize() --The ZYX-13 GPU Font size.
 
 --Localized Lua Library
 

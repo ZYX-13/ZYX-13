@@ -21,7 +21,7 @@ local Verify = SharedVars.Verify
 
 --==Local Functions==--
 
---Apply transparent colors effect on LIKO12 Images when encoded to PNG
+--Apply transparent colors effect on ZYX13 Images when encoded to PNG
 local function _EncodeTransparent(_,_, r,g,b,a)
   if _ImageTransparent[math.floor(r*255)+1] == 0 then return 0,0,0,0 end
   return r,g,b,a
@@ -61,7 +61,7 @@ function GPU.cursor(imgdata,name,hx,hy)
     hx = Verify(hx,"Hot X","number",true)
     hy = Verify(hy,"Hot Y","number",true)
 
-    local enimg = imgdata:enlarge(WindowVars.LIKOScale)
+    local enimg = imgdata:enlarge(WindowVars.ZYXScale)
     --local img = lg.newImage(love.filesystem.newFileData(imgdata:export(),"cursor.png"))
     local limg = love.image.newImageData(love.filesystem.newFileData(enimg:export(),"cursor.png")) --Take it out to love image object
     local gifimg = love.image.newImageData(imgdata:size())
@@ -69,7 +69,7 @@ function GPU.cursor(imgdata,name,hx,hy)
     gifimg:mapPixel(_EncodeTransparent)
     gifimg = lg.newImage(gifimg)
 
-    local hotx, hoty = hx*math.floor(WindowVars.LIKOScale), hy*math.floor(WindowVars.LIKOScale) --Converted to host scale
+    local hotx, hoty = hx*math.floor(WindowVars.ZYXScale), hy*math.floor(WindowVars.ZYXScale) --Converted to host scale
     local cur = love.mouse.isCursorSupported() and love.mouse.newCursor(limg,hotx,hoty) or {}
     local palt = {}
     for i=1, 16 do
@@ -98,9 +98,9 @@ local function rebuildCursors() --The new size will be calculated in the top, be
     end
     GPU.popPalette()
 
-    local enimg = cursor.imgdata:enlarge(WindowVars.LIKOScale)
+    local enimg = cursor.imgdata:enlarge(WindowVars.ZYXScale)
     local limg = love.image.newImageData(love.filesystem.newFileData(enimg:export(),"cursor.png")) --Take it out to love image object
-    local hotx, hoty = cursor.hx*math.floor(WindowVars.LIKOScale), cursor.hy*math.floor(WindowVars.LIKOScale) --Converted to host scale
+    local hotx, hoty = cursor.hx*math.floor(WindowVars.ZYXScale), cursor.hy*math.floor(WindowVars.ZYXScale) --Converted to host scale
     local cur = love.mouse.newCursor(limg,hotx,hoty)
     _CursorsCache[k].cursor = cur
     GPU.popPalette()

@@ -32,8 +32,8 @@ local GPU, yGPU, GPUKit = PA("GPU","GPU",{
   title = Build.Title
 })
 
-local LIKO_W, LIKO_H = GPUKit._LIKO_W, GPUKit._LIKO_H
-local ScreenSize = (LIKO_W/2)*LIKO_H
+local ZYX_W, ZYX_H = GPUKit._ZYX_W, GPUKit._ZYX_H
+local ScreenSize = (ZYX_W/2)*ZYX_H
 
 --Create Audio peripheral
 PA("Audio")

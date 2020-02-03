@@ -1,6 +1,6 @@
 You can view the system files by switching to drive C 'cd C:'.
 You can reinstall DiskOS through the BIOS at any time.
-You can update old LIKO-12 games (older than V0.0.5A) by using the 'loadcart' command.
+You can update old ZYX-13 games (older than V0.0.5A) by using the 'loadcart' command.
 You can play piano notes by using the 'play' program.
 You can check the drives usage by typing 'drives'.
 You can check the available API functions by typing 'apis'.
@@ -16,8 +16,5 @@ You can install PoorOS in the BIOS SETUP, it's just a Lua interpreter.
 You can boot PoorOS directly without installing in the BIOS SETUP.
 You can boot from the D drive from the BIOS SETUP, it will execute 'D:/boot.lua'.
 You can use the 'SheetToClip' command to store extra spritesheets in your code.
-Did you know that there's a public GitHub repository for LIKO-12 disks? Check them out at 'https://liko-12.github.io/Disks'.
-LIKO-12 can use post shaders, check 'https://github.com/LIKO-12/Shaders'.
-Don't forget to give a star on the LIKO-12 GitHub page! Visit 'https://github.com/LIKO-12/LIKO-12'.
-LIKO-12 Nightly-Builds are available at 'https://liko-12.github.io/Nightly'.
+Don't forget to give a star on the ZYX-13 GitHub page! Visit 'https://github.com/ZYX-13/ZYX-13'.
 A backup of the .lk12 is created when saving at C:/_backup.lk12.

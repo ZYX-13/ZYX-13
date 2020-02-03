@@ -167,7 +167,7 @@ end
 
 function edit:drawTopBar()
   rect(0,0,swidth,8,false,self.flavor)
-  SpriteGroup(55, 0,0, 4,1, 1,1, false, _SystemSheet) --The LIKO12 Logo
+  SpriteGroup(55, 0,0, 4,1, 1,1, false, _SystemSheet) --The ZYX13 Logo
   
   self.icons:draw((swidth-#self.editors*8),0, 0, 1,1, self.iconsBGQuad)
   self.icons:draw(swidth-self.active*8,0, 0, 1,1, self.iconsQuads[self.active])

@@ -34,7 +34,7 @@ return function(config)
   
   --The label image
   local LabelImage = GPUKit.LabelImage
-  local LabelX, LabelY, LabelW, LabelH = 32,120, GPUKit._LIKO_W, GPUKit._LIKO_H
+  local LabelX, LabelY, LabelW, LabelH = 32,120, GPUKit._ZYX_W, GPUKit._ZYX_H
   
   --DiskCleanupMapper
   local function _CleanUpDisk(_,_,r,g,b,a)

@@ -21,7 +21,7 @@ Layout (96 KB)
 Meta Data (1 KB)
 ----------------
 0x0000 Data Length (6 Bytes)
-0x0006 LIKO-12 Header (7 Bytes)
+0x0006 ZYX-13 Header (7 Bytes)
 0x000D Color Palette (64 Bytes)
 0x004D Disk Version (1 Byte)
 0x004E Disk Meta (1 Byte)

@@ -15,8 +15,8 @@ local MatrixVars = GPUVars.Matrix
 --==Varss Constants==--
 
 local Verify = SharedVars.Verify
-local _LIKO_W = WindowVars.LIKO_W
-local _LIKO_H = WindowVars.LIKO_H
+local _ZYX_W = WindowVars.ZYX_W
+local _ZYX_H = WindowVars.ZYX_H
 
 --==Local Variables==--
 
@@ -88,7 +88,7 @@ function GPU.patternFill(img)
     
     IMG = lg.newImage(IMG)
     
-    local QUAD = img:quad(0,0,_LIKO_W,_LIKO_H)
+    local QUAD = img:quad(0,0,_ZYX_W,_ZYX_H)
     
     MatrixVars.PatternFill = function()
       lg.setShader(RenderVars.StencilShader)

@@ -1,6 +1,6 @@
 if (...) == "-?" then
   printUsage(
-    "shutdown","Shutdowns LIKO-12"
+    "shutdown","Shutdowns ZYX-13"
   )
   return
 end

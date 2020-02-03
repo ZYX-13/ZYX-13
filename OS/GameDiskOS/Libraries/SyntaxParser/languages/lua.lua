@@ -11,10 +11,10 @@ local keywords = {
 --Lua escapable characters
 local escapable = {"a", "b", "f", "n", "r", "t", "v", "\\", '"', "'"}
 
---LIKO-12 API Functions
+--ZYX-13 API Functions
 local api = _APIList
 
---LIKO-12 Callbacks
+--ZYX-13 Callbacks
 local callbacks = {"_draw","_draw30","_draw60","_init","_keypressed","_keyreleased","_mousemoved","_mousepressed","_mousereleased","_textinput","_touchcontrol","_touchmoved","_touchpressed","_touchreleased","_update","_update30","_update60","_wheelmoved","_filedropped","self"}
 
 --Convert values to keys for instant searching

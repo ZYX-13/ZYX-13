@@ -3,11 +3,11 @@ local reboot, events = false
 
 --==Contribution Guide==--
 --[[
-I did create an events system for LIKO-12, making my work more modular.
+I did create an events system for ZYX-13, making my work more modular.
 Below there is a modified love.run function which implements 4 things:
 - Instead of calling love callbacks, it triggers the events with name "love:callback", for ex: "love:mousepressed".
 - It contains a small and a nice trick which reloads all the code files (expect main.lua & conf.lua)
-    then reboots LIKO-12 without haveing to restart love.
+    then reboots ZYX-13 without haveing to restart love.
 - When the love.graphics is active (usable) it triggers "love:graphics" event.
 - If any "love:quit" event returned true, the quit will be canceled.
 

@@ -1,7 +1,7 @@
 if (...) == "-?" then
   printUsage(
-    "reboot","Soft reboots LIKO-12",
-    "reboot hard","Hard reboots LIKO-12"
+    "reboot","Soft reboots ZYX-13",
+    "reboot hard","Hard reboots ZYX-13"
   )
   return
 end

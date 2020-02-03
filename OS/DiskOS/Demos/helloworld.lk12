@@ -9,7 +9,7 @@ function _init() --The startup function
  local x = 192/2 - 8*3 + 2
  local y = 128/4
  SpriteGroup(1,x-1,y-1,6,2) --id, x,y,w,h
- local str = "This is LIKO-12"
+ local str = "This is ZYX-13S"
  x = 192/2 - (str:len()/2)*5
  y = y + 128/4
  color(11) print(str,x-1,y-1) --text, x, y

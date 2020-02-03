@@ -11,7 +11,7 @@ local CalibrationVars = GPUVars.Calibration
 local VRamVars = GPUVars.VRam
 
 --==Varss Constants==--
-local _LIKO_W, _LIKO_H = WindowVars.LIKO_W, WindowVars.LIKO_H
+local _ZYX_W, _ZYX_H = WindowVars.ZYX_W, WindowVars.ZYX_H
 local ofs = CalibrationVars.Offsets
 
 --==Local Variables==--
@@ -54,7 +54,7 @@ local function UnbindVRAM(keepbind)
   end
 end
 
-local VRAMHandler; VRAMHandler = newImageHandler(_LIKO_W,_LIKO_H,function()
+local VRAMHandler; VRAMHandler = newImageHandler(_ZYX_W,_ZYX_H,function()
   RenderVars.ShouldDraw = true
 end,function()
   BindVRAM()

@@ -6,9 +6,9 @@
 ]]
 
 --[[ Version:
-- _LIKO_Version, LIKO-12's current version string.
-- _LIKO_Old, LIKO-12's old version string,
-- _LVer, Parsed LIKO-12 version information, a table with this indexes: major,minor,patch and tag.
+- _ZYX_Version, ZYX-13's current version string.
+- _ZYX_Old, ZYX-13's old version string,
+- _LVer, Parsed ZYX-13 version information, a table with this indexes: major,minor,patch and tag.
 ]]
 
 --[[ Constants:
@@ -37,15 +37,15 @@ local SpriteSheet = require("Libraries.spritesheet")
 
 --==Version==--
 
-_LIKO_Version, _LIKO_Old = BIOS.getVersion()
+_ZYX_Version, _ZYX_Old = BIOS.getVersion()
 _LVer = {}
-_LVer.major, _LVer.minor, _LVer.patch, _LVer.tag = string.match(_LIKO_Version,"(%d+)%.(%d+)%.(%d+)%-(.+)")
+_LVer.major, _LVer.minor, _LVer.patch, _LVer.tag = string.match(_ZYX_Version,"(%d+)%.(%d+)%.(%d+)%-(.+)")
 _LVer.major, _LVer.minor, _LVer.patch = tonumber(_LVer.major), tonumber(_LVer.minor), tonumber(_LVer.patch)
 
 --==Constants==--
 
 _APIVer = 2 --The current version of the games API.
-_APIList = {} --An array containing LIKO-12's global API names (Used by the syntax parser).
+_APIList = {} --An array containing ZYX-13's global API names (Used by the syntax parser).
 
 do
   local list = _APIList

@@ -1,6 +1,6 @@
 if (...) == "-?" then
   printUsage(
-    "charmap","Displays LIKO-12 Extended ASCII Characters Map."
+    "charmap","Displays ZYX-13 Extended ASCII Characters Map."
   )
   return
 end

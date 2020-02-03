@@ -11,10 +11,10 @@ local GPU = Handled.GPU
 local CPU = Handled.CPU
 local fs = Handled.HDD
 
-local _LIKO_Version, _LIKO_Old = BIOS.getVersion()
+local _ZYX_Version, _ZYX_Old = BIOS.getVersion()
 
-if _LIKO_Old then
-  love.filesystem.write("Miscellaneous/.version",tostring(_LIKO_Version)) --Update the .version file
+if _ZYX_Old then
+  love.filesystem.write("Miscellaneous/.version",tostring(_ZYX_Version)) --Update the .version file
 end
 
 local sw,sh = GPU.screenSize()
@@ -31,7 +31,7 @@ end
 
 --ASSETS--
 local corner = loadImage("corner")
-local likologo = loadImage("likologo")
+local zyxlogo = loadImage("zyxlogo")
 
 local Patterns = {}
 for i=1,17 do
@@ -60,7 +60,7 @@ for event,dt,b,c,e,f in CPU.pullEvent do
     GPU.patternFill(Patterns[math.floor(math.min(ptimer,16))+1])
 
     GPU.rect(0,0,sw,sh,false,5)
-    likologo:draw(cx,cy,0,2,2)
+    zyxlogo:draw(cx,cy,0,2,2)
     corner:draw(0,0, 0, 1,1)
     corner:draw(sw,0, 0, -1,1)
     corner:draw(sw,sh, 0, -1,-1)

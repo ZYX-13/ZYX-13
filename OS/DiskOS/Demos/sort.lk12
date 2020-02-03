@@ -3,7 +3,7 @@ ___luacode___
 -- Sorting Demo
 -- By ZEP
 -- Originally for PICO-8
--- Ported to LIKO-12 by RamiLego4Game
+-- Ported to ZYX-13 by RamiLego4Game
 
 function _init()
  clear()

@@ -12,7 +12,7 @@ local likoPE = require("Libraries.liko-pe")
 --The API
 local BuildUtils = {}
 
---Mount LIKO-12 Sourcecode
+--Mount ZYX-13 Sourcecode
 function BuildUtils.mountSRC()
   return fs.mountZIP(BIOS.getSRC())
 end

@@ -3,7 +3,7 @@ if (...) == "-?" then
   return
 end
 
-color(11) print("LIKO-12 V".._LIKO_Version)
+color(11) print("ZYX-13 V".._ZYX_Version)
 if old then
-  color(6) print("Updated from: V".._LIKO_Old)
+  color(6) print("Updated from: V".._ZYX_Old)
 end

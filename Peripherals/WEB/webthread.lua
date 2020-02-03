@@ -33,7 +33,7 @@ end
 local ls_https
 if has_luasec then
   ls_https = require(peripheral_path.."https")
-  ls_https.USERAGENT = "LIKO-12"
+  ls_https.USERAGENT = "ZYX-13"
 end
 
 --LuaSocket
@@ -41,7 +41,7 @@ local ls_http = require("socket.http")
 local ls_ltn12 = require("ltn12")
 local ls_url = require("socket.url")
 
-ls_http.USERAGENT = "LIKO-12"
+ls_http.USERAGENT = "ZYX-13"
 
 local ls_body --Set later when requesting to an empty table
 local function ls_sink(chunk)

@@ -1,5 +1,5 @@
 --Thread used to keep track of files being edited and automatically update them
---in the appdata folder so LIKO-12 does not need to be restarted for some tasks
+--in the appdata folder so ZYX-13 does not need to be restarted for some tasks
 
 --Only tracks the DiskOS folder by default
 

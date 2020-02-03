@@ -206,7 +206,7 @@ tabs[1] = {"Info",{
     {"System Time:   ",function() return os.date("[%H:%M:%S]",os.time()) end},
     {"System Date:   ",function() return os.date("[%d/%m/%Y]",os.time()) end},
     {""}, --Spacer
-    {"LIKO-12 Ver:   ",_LVERSION:sub(2,-1)},
+    {"ZYX-13 Ver:   ",_LVERSION:sub(2,-1)},
     {"Devmode:       ",DevMode and "Enabled" or "Disabled"},
     {"Custom OS:     ",fs.exists("C:/.noupdate") and "Yes" or "No"},
     {""}, --Spacer

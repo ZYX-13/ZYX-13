@@ -161,7 +161,7 @@ end
 
 function GPU.image(data)
   local Image, SourceData
-  if type(data) == "string" then --Load liko12 specialized image format
+  if type(data) == "string" then --Load zyx13 specialized image format
     local ok, imageData = pcall(GPU.imagedata,data)
     if not ok then return error(imageData) end
     return imageData:image()

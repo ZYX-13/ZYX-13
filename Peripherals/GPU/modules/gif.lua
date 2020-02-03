@@ -24,8 +24,8 @@ local _CursorsCache = CursorVars.CursorsCache
 local systemMessage = MiscVars.systemMessage
 local _ColorSet = PaletteVars.ColorSet
 local ofs = CalibrationVars.Offsets
-local _LIKO_W = WindowVars.LIKO_W
-local _LIKO_H = WindowVars.LIKO_H
+local _ZYX_W = WindowVars.ZYX_W
+local _ZYX_H = WindowVars.ZYX_H
 local UnbindVRAM = VRamVars.UnbindVRAM
 
 --==Local Variables==--
@@ -44,13 +44,13 @@ GifVars.PChanged = false --A flag to indicate that the palette did change while 
 
 local _CanvasFormats = lg.getCanvasFormats()
 
-local _GIFCanvas = lg.newCanvas(_LIKO_W*_GIFScale,_LIKO_H*_GIFScale,{
+local _GIFCanvas = lg.newCanvas(_ZYX_W*_GIFScale,_ZYX_H*_GIFScale,{
   format = (_CanvasFormats.r8 and "r8" or "normal"),
   dpiscale = 1
 }) --Create the gif canvas, used to apply the gif scale factor.
 
 --GifRecorder
-local _GIF = love.filesystem.load(Path.."scripts/gif.lua")( _GIFScale, _LIKO_W, _LIKO_H ) --Load the gif library
+local _GIF = love.filesystem.load(Path.."scripts/gif.lua")( _GIFScale, _ZYX_W, _ZYX_H ) --Load the gif library
 
 local function startGifRecording()
   if _GIFRec then return end --If there is an already in progress gif
@@ -93,7 +93,7 @@ local function endGifRecording()
   end
   _GIFRec:close()
   _GIFRec = nil
-  love.filesystem.write("/GIF Recordings/LIKO12-"..os.time()..".gif",love.filesystem.read("/~gifrec.gif"))
+  love.filesystem.write("/GIF Recordings/ZYX13-"..os.time()..".gif",love.filesystem.read("/~gifrec.gif"))
   love.filesystem.remove("/~gifrec.gif")
   love.filesystem.remove("/~gifrec.pal")
 end
@@ -187,11 +187,11 @@ events.register("love:update",function(dt)
     
     if MiscVars.MSGTimer > 0 and MiscVars.LastMSGGif then
       lg.setColor(MiscVars.LastMSGColor/255,0,0,1)
-      lg.rectangle("fill", ofs.screen[1]+ofs.rect[1], ofs.screen[2] + (_LIKO_H-8) * _GIFScale + ofs.rect[2],
-      _LIKO_W *_GIFScale + ofs.rectSize[1], 8*_GIFScale + ofs.rectSize[2])
+      lg.rectangle("fill", ofs.screen[1]+ofs.rect[1], ofs.screen[2] + (_ZYX_H-8) * _GIFScale + ofs.rect[2],
+      _ZYX_W *_GIFScale + ofs.rectSize[1], 8*_GIFScale + ofs.rectSize[2])
       lg.setColor(MiscVars.LastMSGTColor/255,0,0,1)
       lg.push()
-      lg.translate(ofs.screen[1]+ofs.print[1]+_GIFScale, ofs.screen[2] + (_LIKO_H-7) * _GIFScale + ofs.print[2])
+      lg.translate(ofs.screen[1]+ofs.print[1]+_GIFScale, ofs.screen[2] + (_ZYX_H-7) * _GIFScale + ofs.print[2])
       lg.scale(_GIFScale,_GIFScale)
       lg.print(MiscVars.LastMSG,0,0)
       lg.pop()

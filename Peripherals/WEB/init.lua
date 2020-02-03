@@ -102,7 +102,7 @@ return function(config)
     end
     
     if not nrequest.headers then nrequest.headers = {} end
-    nrequest.headers["user-agent"] = nrequest.headers["user-agent"] or "LIKO-12"
+    nrequest.headers["user-agent"] = nrequest.headers["user-agent"] or "ZYX-13"
     nrequest.headers["content-type"] = nrequest.headers["content-type"] or "application/x-www-form-urlencoded"
     
     nrequest.url = url

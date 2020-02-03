@@ -1,6 +1,6 @@
 --==Contribution Guide==--
 --[[
-Events System, used for wiring love events to LIKO-12's peripherals.
+Events System, used for wiring love events to ZYX-13's peripherals.
 
 Event Name:
 * It's highly recommended to name event as "parent:funcName", for ex: "love:update".

@@ -21,7 +21,7 @@ function utils:newTool(readonly)
   
   function tool:drawTopBar()
     rect(0,0,swidth,8,false,self.flavor)
-    SpriteGroup(55, 0,0, 4,1, 1,1, false, _SystemSheet) --The LIKO12 Logo
+    SpriteGroup(55, 0,0, 4,1, 1,1, false, _SystemSheet) --The ZYX13 Logo
     SpriteGroup(controlID, controlGrid[1],controlGrid[2], controlGrid[5],controlGrid[6], 1,1, false, _SystemSheet)
     if readonly then
       _SystemSheet:draw(controlID-2, controlGrid[1]+8,controlGrid[2])
